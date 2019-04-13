@@ -6,9 +6,6 @@ public class MyCharacterController2D : MonoBehaviour
 {
     #region F/P    
     const float CEILINGRADIUS = .02f;
-    [Range(0, 1)]
-    [SerializeField]
-    float airSpeed = 1;
     const float GROUNDEDRADIUS = .2f;
     [SerializeField,Range(0, 1000)]
     float jumpForce = 100f;
@@ -79,9 +76,6 @@ public class MyCharacterController2D : MonoBehaviour
 
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
-
-        //if (OnCrouchEvent == null)
-        //    OnCrouchEvent = new BoolEvent();
     }
 
     void FixedUpdate()
@@ -95,7 +89,6 @@ public class MyCharacterController2D : MonoBehaviour
             if (_colliders[i].gameObject != gameObject)
             {
                 isGrounded = true;
-                //isjumping = false;
                 if (!_wasGrounded)
                     OnLandEvent.Invoke();
             }
