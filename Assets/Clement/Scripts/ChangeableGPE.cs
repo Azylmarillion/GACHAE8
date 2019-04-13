@@ -12,6 +12,7 @@ public class ChangeableGPE : MonoBehaviour
         e_Small
     };
 
+    [SerializeField]
     protected e_PlayerSize m_PlayerCurrentSize = e_PlayerSize.e_Big;
     protected e_PlayerSize m_SizeBuffer = e_PlayerSize.e_Big;
 
@@ -47,6 +48,7 @@ public class ChangeableGPE : MonoBehaviour
                 break;
         }
 
+        m_CurrentGPE = Instantiate(GPEToInstantiateAtStart, this.transform.position, Quaternion.identity, this.gameObject.transform);
         m_SizeBuffer = m_PlayerCurrentSize;
     }
 

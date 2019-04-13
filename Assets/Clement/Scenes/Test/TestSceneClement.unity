@@ -141,9 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5231eaef178d4b743b1ea4c29d2322ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TESTbigSmallTEST: 0
   m_BigGPE: {fileID: 371381049102972727, guid: 464bd039bf29f5e47aeb7df510bffc85, type: 3}
-  m_MediumGPE: {fileID: 371381049102972727, guid: 464bd039bf29f5e47aeb7df510bffc85,
+  m_MediumGPE: {fileID: 8580819631180349799, guid: fd14d415c3ca08b4bacde57c872bc1c9,
     type: 3}
   m_SmallGPE: {fileID: 8916950096963224225, guid: c525a4d2277780b4aa28b607bf19c3b5,
     type: 3}
