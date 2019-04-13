@@ -6,8 +6,9 @@ public class MyCharacterController2D : MonoBehaviour
 {
     #region F/P    
     const float CEILINGRADIUS = .02f;
-    //[Range(0, 1)] [SerializeField]
-    //float crouchSpeed = 1;
+    [Range(0, 1)]
+    [SerializeField]
+    float airSpeed = 1;
     const float GROUNDEDRADIUS = .2f;
     [SerializeField,Range(0, 1000)]
     float jumpForce = 100f;
@@ -17,15 +18,11 @@ public class MyCharacterController2D : MonoBehaviour
     float moveSpeed = 7;
     [SerializeField]
     bool canAirControl = false;
-    //public bool CanFlipCrouch = false;
-    //public bool DisableColliderInJump = false;
     [SerializeField]
     bool isFacingRight = true;
     [SerializeField]
     bool isGrounded;
     public bool IsGrounded { get { return isGrounded; } }
-    //[SerializeField]
-    //bool isjumping = false;
     [SerializeField]
     LayerMask whatIsGround;
     [SerializeField]
@@ -33,10 +30,7 @@ public class MyCharacterController2D : MonoBehaviour
     [SerializeField]
     Transform groundCheck;                           
     [SerializeField]
-    Transform ceilingCheck;                          
-    //[SerializeField]
-    //Collider2D colliderToDisable;
-    //[SerializeField]
+    Transform ceilingCheck; 
     Vector3 velocity = Vector3.zero;
     [Header("Events")]
     [Space]
@@ -44,65 +38,19 @@ public class MyCharacterController2D : MonoBehaviour
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
 
-    //public BoolEvent OnCrouchEvent;
-    //bool wasCrouching = false;
     #endregion
 
     #region Meths
-    //void DisableCollider()
-    //{
-    //    colliderToDisable.enabled = false;
-    //    //Debug.Log("collider" + colliderToDisable.enabled);
-    //}
-    //void EnableCollider()
-    //{
-    //    colliderToDisable.enabled = true;
-    //    //Debug.Log("collider" + colliderToDisable.enabled);
-    //}
     void FlipCharactere()
     {
         isFacingRight = !isFacingRight;
         transform.Rotate(0, 180, 0);
     }
 
-    public void Move(float _move, /*bool _isCrouch,*/ bool _isJump)
-    {
-        //if (!_isCrouch)
-        //{
-        //    if (Physics2D.OverlapCircle(ceilingCheck.position, CEILINGRADIUS, whatIsGround))
-        //    {
-        //        _isCrouch = true;
-        //        //si ball bloquer en ball tant que _isCrouch true
-        //    }
-        //}
-
+    public void Move(float _move, bool _isJump)
+    {       
         if (isGrounded || canAirControl)
         {
-
-            //if (_isCrouch)
-            //{
-            //    if (!wasCrouching)
-            //    {
-            //        wasCrouching = true;
-            //        OnCrouchEvent.Invoke(true);
-            //    }
-
-            //    _move *= crouchSpeed;
-
-            //    if (colliderToDisable != null)
-            //        DisableCollider();
-            //}
-            //else
-            //{
-            //    if (colliderToDisable != null)
-            //        EnableCollider();
-
-            //    if (wasCrouching)
-            //    {
-            //        wasCrouching = false;
-            //        OnCrouchEvent.Invoke(false);
-            //    }
-            //}
             if (_move > 0 && !isFacingRight)
             {
                 FlipCharactere();
@@ -111,20 +59,15 @@ public class MyCharacterController2D : MonoBehaviour
             {
                 FlipCharactere();
             }
-            //if (CanFlipCrouch && wasCrouching) return;            
-               Vector3 targetVelocity = new Vector2(_move * 10f * moveSpeed * Time.fixedDeltaTime,playerRigidbody2D.velocity.y);
-               playerRigidbody2D.velocity = Vector3.SmoothDamp(playerRigidbody2D.velocity, targetVelocity, ref velocity, movementSmoothing);            
+                Vector3 targetVelocity = new Vector2(_move * 10f * moveSpeed * Time.fixedDeltaTime, playerRigidbody2D.velocity.y);
+                playerRigidbody2D.velocity = Vector3.SmoothDamp(playerRigidbody2D.velocity, targetVelocity, ref velocity, movementSmoothing);
+            
+
         }
         if (isGrounded && _isJump)
         {
             isGrounded = false;            
-            playerRigidbody2D.AddForce(new Vector2(0f, jumpForce));
-            //isjumping = true;////
-            //Debug.Log("jumping"+isjumping);
-            //if (DisableColliderInJump)
-            //{
-            //    DisableCollider();
-            //}
+            playerRigidbody2D.AddForce(new Vector2(0f, jumpForce));            
         }
     }
     #endregion
