@@ -6,21 +6,20 @@ using UnityEngine.Rendering.PostProcessing;
 public class PostProcessHandler : MonoBehaviour
 {
 
-    [SerializeField]public PostProcessProfile profile;
+    [SerializeField]
+    private PostProcessProfile profile;
+    [SerializeField]
+    private float vignettePulseSpeed;
 
-    public float vignettePulseSpeed;
+    public bool pingPongPulseOrGradual;
 
-    public bool pingPongPulse;
+    protected float currentIntensity;
 
-    public bool gradualPulse;
+    protected float targetIntensity;
 
-    private float currentIntensity;
+    protected ColorGrading colorGrading = null;
 
-    private float targetIntensity;
-
-    ColorGrading colorGrading = null;
-
-    Vignette vignette = null;
+    protected Vignette vignette = null;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +35,10 @@ public class PostProcessHandler : MonoBehaviour
         if(colorGrading.saturation.value > -99)
             colorGrading.saturation.value -= 1;
 
-        if(pingPongPulse && !gradualPulse)
+        if(pingPongPulseOrGradual)
             vignette.intensity.value = Mathf.PingPong(Time.time, 0.1f) + 0.4f;
 
-        if (gradualPulse && !pingPongPulse)
+        if (!pingPongPulseOrGradual)
         {
             currentIntensity = Mathf.MoveTowards(vignette.intensity.value, targetIntensity, Time.deltaTime * vignettePulseSpeed);
             if(currentIntensity>= 0.5f)
