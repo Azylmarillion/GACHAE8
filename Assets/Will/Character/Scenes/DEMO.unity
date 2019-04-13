@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 239222548}
   - component: {fileID: 239222547}
   - component: {fileID: 239222546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: fond (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,5 +972,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8762738408896342163, guid: cdcbcd7e3c2867647ae338b94bb272b2,
+        type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762738408896342163, guid: cdcbcd7e3c2867647ae338b94bb272b2,
+        type: 3}
+      propertyPath: airSpeed
+      value: 0.173
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762738408896342175, guid: cdcbcd7e3c2867647ae338b94bb272b2,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: dc377fa096aab394aa5546799be6d482, type: 2}
+    - target: {fileID: 8762738408896342172, guid: cdcbcd7e3c2867647ae338b94bb272b2,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: dc377fa096aab394aa5546799be6d482, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdcbcd7e3c2867647ae338b94bb272b2, type: 3}
