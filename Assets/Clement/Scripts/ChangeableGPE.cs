@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class ChangeableGPE : MonoBehaviour
 {
-    [SerializeField]
-    protected bool TESTbigSmallTEST;
-    protected bool TESTbigsmallBufferTEST;
+    protected enum e_PlayerSize
+    {
+        e_Big,
+        e_Medium,
+        e_Small
+    };
+
+    protected e_PlayerSize m_PlayerCurrentSize = e_PlayerSize.e_Big;
+    protected e_PlayerSize m_SizeBuffer = e_PlayerSize.e_Big;
 
     [SerializeField]
     protected GPE m_BigGPE;
@@ -17,45 +23,57 @@ public class ChangeableGPE : MonoBehaviour
     protected GPE m_SmallGPE;
 
     [SerializeField]
-    protected bool m_IsGPELocked;
+    private bool m_IsGPELocked;
     protected GPE m_CurrentGPE;
 
+    public bool SetIsGPELocked { set => m_IsGPELocked = value; }
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         m_CurrentGPE = null;
+        GPE GPEToInstantiateAtStart = null;
 
-        if (TESTbigSmallTEST)
+        switch (m_PlayerCurrentSize)
         {
-            m_CurrentGPE = Instantiate<GPE>(m_BigGPE, this.transform.position, Quaternion.identity, this.gameObject.transform);
+            case e_PlayerSize.e_Big:
+                GPEToInstantiateAtStart = m_BigGPE;
+                break;
+            case e_PlayerSize.e_Medium:
+                GPEToInstantiateAtStart = m_MediumGPE;
+                break;
+            case e_PlayerSize.e_Small:
+                GPEToInstantiateAtStart = m_SmallGPE;
+                break;
         }
 
-        else
-        {
-            m_CurrentGPE = Instantiate<GPE>(m_SmallGPE, this.transform.position, Quaternion.identity, this.gameObject.transform);
-        }
+        m_SizeBuffer = m_PlayerCurrentSize;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (TESTbigsmallBufferTEST != TESTbigSmallTEST && !m_IsGPELocked)
-        {
-            if (TESTbigSmallTEST)
-            {
-                ChangeCurrentTo(m_BigGPE);
-            }
 
-            else
+        if (!m_IsGPELocked && m_SizeBuffer != m_PlayerCurrentSize)
+        {
+            switch (m_PlayerCurrentSize)
             {
-                ChangeCurrentTo(m_SmallGPE);
+                case e_PlayerSize.e_Big:
+                    ChangeCurrentTo(m_BigGPE);
+                    break;
+                case e_PlayerSize.e_Medium:
+                    ChangeCurrentTo(m_MediumGPE);
+                    break;
+                case e_PlayerSize.e_Small:
+                    ChangeCurrentTo(m_SmallGPE);
+                    break;
             }
         }
 
-        TESTbigsmallBufferTEST = TESTbigSmallTEST;
+        m_SizeBuffer = m_PlayerCurrentSize;
     }
 
-    void ChangeCurrentTo(GPE _WhichGPE)
+    private void ChangeCurrentTo(GPE _WhichGPE)
     {
         Destroy(m_CurrentGPE.gameObject);
         m_CurrentGPE = Instantiate(_WhichGPE, this.transform.position, Quaternion.identity, this.gameObject.transform);
