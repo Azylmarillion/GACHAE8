@@ -5,12 +5,15 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class PostProcessHandler : MonoBehaviour
 {
-    //
+    
     [SerializeField, Range(.1f, 1)]
     float randMin = .1f;
     [SerializeField,Range(.1f,1)]
     float randMax = .3f;
-    //
+    [SerializeField, Range( 0f, 1)]
+    float vignetteMaxSize = 0.5f;
+    [SerializeField, Range(0f, 1)]
+    float vignetteMinSize = 0.1f;
     [SerializeField]
     private PostProcessProfile profile;
     [SerializeField]
@@ -60,7 +63,7 @@ public class PostProcessHandler : MonoBehaviour
 
         vignettePulseSpeed = Random.Range(randMin, randMax);
 
-        if (GameManager.m_JumpSpeedPower && colorGrading.saturation.value < 0)
+        if (GameManager.m_JumpSpeedPower && colorGrading.saturation.value < GameManager.m_SaturationValue)
         {
             colorGrading.saturation.value += 1;
         }
@@ -73,15 +76,15 @@ public class PostProcessHandler : MonoBehaviour
             if (!pingPongPulseOrGradual)
             {
                 currentIntensity = Mathf.MoveTowards(vignette.intensity.value, targetIntensity, Time.deltaTime * vignettePulseSpeed);
-                if (currentIntensity >= 0.5f)
+                if (currentIntensity >= vignetteMaxSize)
                 {
-                    currentIntensity = 0.5f;
-                    targetIntensity = 0.3f;
+                    currentIntensity = vignetteMaxSize;
+                    targetIntensity = vignetteMinSize;
                 }
-                else if (currentIntensity <= 0.3f)
+                else if (currentIntensity <= vignetteMinSize)
                 {
-                    currentIntensity = 0.3f;
-                    targetIntensity = 0.5f;
+                    currentIntensity = vignetteMinSize;
+                    targetIntensity = vignetteMaxSize;
                 }
                 vignette.intensity.value = currentIntensity;
             }

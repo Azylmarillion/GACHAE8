@@ -14,5 +14,6 @@ static public class GameManager
     public static bool m_ProjectPower = false;
     public static Vector3 m_RespawnPoint = new Vector3(-8, 2, 0);
     public static int m_PickUpsGot = 0;
+    public static float m_SaturationValue = -100f;
 
 }

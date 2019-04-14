@@ -9,11 +9,11 @@ public class MyCharacterController2D : MonoBehaviour
     const float CEILINGRADIUS = .02f;
     const float GROUNDEDRADIUS = .2f;
     [SerializeField,Range(0, 1000)]
-    float jumpForce = 100f;
+    public float jumpForce = 100f;
     [Range(0, .3f)] [SerializeField]
     float movementSmoothing = .05f;
     [SerializeField, Range(.1f, 50)]
-    float moveSpeed = 7;
+    public float moveSpeed = 7;
     [SerializeField]
     bool canAirControl = false;
     [SerializeField]
