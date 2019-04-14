@@ -35,9 +35,10 @@ public class PostMortemGPE : MonoBehaviour
         if (player && m_CorpseToReveal)
         {
             GameManager.m_nbrCadavre--;
+            GameManager.m_SaturationValue -= 33.33f;
+
             GameManager.E_Death.Invoke();
             collision.transform.position = GameManager.m_RespawnPoint;
-            collision.transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f); 
 
             if (GameManager.m_nbrCadavre >= 0)
             {
@@ -50,11 +51,6 @@ public class PostMortemGPE : MonoBehaviour
                 player.IsGameOver();
             }
         }
-        GameManager.m_nbrCadavre--;
-        GameManager.E_Death.Invoke();
-        collision.transform.position = GameManager.m_RespawnPoint;
-        Debug.Log(GameManager.m_nbrCadavre);
-
 
 
     }

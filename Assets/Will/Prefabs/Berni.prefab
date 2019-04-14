@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 1382465534041187758}
   m_Layer: 0
   m_Name: Berni
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -268,7 +268,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TimeObservedBeforeDying: 2
-  m_DeadBodyPrefab: {fileID: 0}
+  m_StonePrefab: {fileID: 0}
+  m_corpses: []
 --- !u!1 &1382465534381884705
 GameObject:
   m_ObjectHideFlags: 0

@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
             animatorPlayer = gameObject.GetComponent<Animator>();
         }
         GameManager.E_Death.AddListener(OnDeath);
+        GameManager.m_RespawnPoint = transform.position;
     }     
     #endregion
 }
