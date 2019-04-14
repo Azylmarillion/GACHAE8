@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField]  private float m_TimeObservedBeforeDying = 2;
-    [SerializeField]  private GameObject m_StonePrefab = null;
+    [SerializeField]  private GameObject m_DeadBodyPrefab = null;
     private float m_TimeSpentObserved;
 
     // Start is called before the first frame update
@@ -35,9 +35,9 @@ public class PlayerCharacter : MonoBehaviour
 
     private void TurnIntoStone()
     {
-        if (m_StonePrefab != null)
+        if (m_DeadBodyPrefab != null)
         {
-            Instantiate(m_StonePrefab, transform.position, Quaternion.identity);
+            Instantiate(m_DeadBodyPrefab, transform.position, Quaternion.identity);
         }
         if(GameManager.m_nbrCadavre >= 0)
         {

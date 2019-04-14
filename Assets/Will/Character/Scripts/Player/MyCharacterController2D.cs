@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class MyCharacterController2D : MonoBehaviour
 {
     #region F/P    
-    const float CEILINGRADIUS = .02f;
-    const float GROUNDEDRADIUS = .2f;
+    const float CEILINGRADIUS = .2f;
+    const float GROUNDEDRADIUS = .02f;
     [SerializeField,Range(0, 1000)]
     public float jumpForce = 100f;
     [Range(0, .3f)] [SerializeField]
@@ -58,8 +58,6 @@ public class MyCharacterController2D : MonoBehaviour
             }
                 Vector3 targetVelocity = new Vector2(_move * 10f * moveSpeed * Time.fixedDeltaTime, playerRigidbody2D.velocity.y);
                 playerRigidbody2D.velocity = Vector3.SmoothDamp(playerRigidbody2D.velocity, targetVelocity, ref velocity, movementSmoothing);
-            
-
         }
         if (isGrounded && _isJump)
         {

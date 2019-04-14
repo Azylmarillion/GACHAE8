@@ -18,29 +18,34 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Meths
+
     #region PlayerBehaviour     
+    public void MakeMeDie(bool _dieAlive)
+    {
+        animatorPlayer.SetBool("MakeMeDie", _dieAlive);
+    }
     void MakeMeJump(bool _doIt)
     {
         if (!_doIt) return;
         canJump = true;
-        canCrouch = false;
-        //animatorPlayer.SetBool("MakeMeJump", true);
+        animatorPlayer.SetBool("MakeMeJump", true);
     }
     void MakeMeMove(float _horizontalMove)
     {        
         horizontalMove = _horizontalMove;
-        //animatorPlayer.SetFloat("MakeMeWalk", Mathf.Abs(_horizontalMove));
-        //if (!playerToControl.IsGrounded) animatorPlayer.SetBool("MakeMeJump", true);        
+        animatorPlayer.SetFloat("MakeMeWalk", Mathf.Abs(_horizontalMove));
+        if (!playerToControl.IsGrounded) animatorPlayer.SetBool("MakeMeJump", true);        
     }    
+    private void OnDeath()
+    {
+        CameraBehaviour.Instance.ScreenShake();
+    }
+
     #endregion
     #region Events
     public void OnLanding()
     {
-       // animatorPlayer.SetBool("MakeMeJump", false);
-    }
-    public void OnCrouch(bool _canStand)
-    {
-
+        animatorPlayer.SetBool("MakeMeJump", false);
     }
     #endregion
     #endregion
@@ -50,13 +55,13 @@ public class PlayerController : MonoBehaviour
     {        
         XboxControllerInputManagerWindows.OnADownInputPress += MakeMeJump;
         XboxControllerInputManagerWindows.OnHorizontalAxisInput += MakeMeMove;
-        KeyboardInputsManager.OnSpaceClickDownInputPress += MakeMeJump;
+        //KeyboardInputsManager.OnSpaceClickDownInputPress += MakeMeJump;
         
     }
 
     void FixedUpdate()
     {
-        MakeMeMove(Input.GetAxis("Horizontal"));
+       // MakeMeMove(Input.GetAxis("Horizontal"));
         playerToControl.Move(horizontalMove, canJump);
         canJump = false;
         if (GameManager.m_JumpSpeedPower)
@@ -76,12 +81,6 @@ public class PlayerController : MonoBehaviour
             animatorPlayer = gameObject.GetComponent<Animator>();
         }
         GameManager.E_Death.AddListener(OnDeath);
-    } 
-
-    private void OnDeath()
-    {
-        CameraBehaviour.Instance.ScreenShake();
-    }
-
+    }     
     #endregion
 }
