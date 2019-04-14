@@ -13,7 +13,7 @@ public class Menu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && SceneManager.GetActiveScene().name != "SceneAlice")
+        if(Input.GetKeyDown(KeyCode.A) && SceneManager.GetActiveScene().name != "SceneAlice")
         {
             ManagePauseMenu();
         }
@@ -26,11 +26,11 @@ public class Menu : MonoBehaviour
 
     public void ManagePauseMenu()
     {
-        if (!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
+        if(!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
         {
             m_PauseMenu.SetActive(!m_PauseMenu.activeInHierarchy);
         }
-
+      
     }
 
     public void Resume()
@@ -64,20 +64,6 @@ public class Menu : MonoBehaviour
         m_ControlsMenu.SetActive(false);
         m_OptionMenu.SetActive(true);
     }
-
-    public void ScreenManager(bool _wantFullScreen)
-    {
-        if (_wantFullScreen && !Screen.fullScreen)
-        {
-            Screen.fullScreen = true;
-        }
-        else if (!_wantFullScreen && Screen.fullScreen)
-        {
-            Screen.fullScreen = false;
-        }
-
-    }
-}
 
     public void Quit()
     {
