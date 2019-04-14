@@ -723,247 +723,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &900266048
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 900266049}
-  m_Layer: 0
-  m_Name: CameraManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &900266049
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900266048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1794808100}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1268434836
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1268434837}
-  - component: {fileID: 1268434838}
-  m_Layer: 0
-  m_Name: KeyboardInputsManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1268434837
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268434836}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.418845, y: -1.1027782, z: 1.4446459}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1396850980}
-  m_Father: {fileID: 1794808100}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1268434838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268434836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9816cba28a6d474ba223ae2e41847cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseX: 0
-  mouseY: 0
-  leftClick: 0
-  leftClickDown: 0
-  leftClickUp: 0
-  rightClick: 0
-  rightClickDown: 0
-  rightClickUp: 0
-  wheelClick: 0
-  wheelClickDown: 0
-  wheelClickUp: 0
-  alphaOneKeyboard: 0
-  alphaOneKeyboardDown: 0
-  alphaOneKeyboardUp: 0
-  alphaTwoKeyboard: 0
-  alphaTwoKeyboardDown: 0
-  alphaTwoKeyboardUp: 0
-  alphaThreeKeyboard: 0
-  alphaThreeKeyboardDown: 0
-  alphaThreeKeyboardUp: 0
-  alphFourKeyboard: 0
-  alphFourKeyboardDown: 0
-  alphFourKeyboardUp: 0
-  alphaFiveKeyboard: 0
-  alphaFiveKeyboardDown: 0
-  alphaFiveKeyboardUp: 0
-  alphaSixKeyboard: 0
-  alphaSixKeyboardDown: 0
-  alphaSixKeyboardUp: 0
-  alphaSevenKeyboard: 0
-  alphaSevenKeyboardDown: 0
-  alphaSevenKeyboardUp: 0
-  alphaEightKeyboard: 0
-  alphaEightKeyboardDown: 0
-  alphaEightKeyboardUp: 0
-  alphaNineKeyboard: 0
-  alphaNineKeyboardDown: 0
-  alphaNineKeyboardUp: 0
-  alphaZeroKeyboard: 0
-  alphaZeroKeyboardDown: 0
-  alphaZeroKeyboardUp: 0
-  downArrow: 0
-  downArrowDown: 0
-  downArrowUp: 0
-  leftArrow: 0
-  leftArrowDown: 0
-  leftArrowUp: 0
-  rightArrow: 0
-  rightArrowDown: 0
-  rightArrowUp: 0
-  upArrow: 0
-  upArrowDown: 0
-  upArrowUp: 0
-  keypadZeroKeyboard: 0
-  keypadZeroKeyboardDown: 0
-  keypadZeroKeyboardUp: 0
-  keypadOneKeyboard: 0
-  keypadOneKeyboardDown: 0
-  keypadOneKeyboardUp: 0
-  keypadTwoKeyboard: 0
-  keypadTwoKeyboardDown: 0
-  keypadTwoKeyboardUp: 0
-  keypadThreeKeyboard: 0
-  keypadThreeKeyboardDown: 0
-  keypadThreeKeyboardUp: 0
-  keypadFourKeyboard: 0
-  keypadFourKeyboardDown: 0
-  keypadFourKeyboardUp: 0
-  keypadFiveKeyboard: 0
-  keypadFiveKeyboardDown: 0
-  keypadFiveKeyboardUp: 0
-  keypadSixKeyboard: 0
-  keypadSixKeyboardDown: 0
-  keypadSixKeyboardUp: 0
-  keypadSevenKeyboard: 0
-  keypadSevenKeyboardDown: 0
-  keypadSevenKeyboardUp: 0
-  keypadEightKeyboard: 0
-  keypadEightKeyboardDown: 0
-  keypadEightKeyboardUp: 0
-  keypadNineKeyboard: 0
-  keypadNineKeyboardDown: 0
-  keypadNineKeyboardUp: 0
-  aKeyboard: 0
-  aKeyboardDown: 0
-  aKeyboardUp: 0
-  zKeyboard: 0
-  zKeyboardDown: 0
-  zKeyboardUp: 0
-  eKeyboard: 0
-  eKeyboardDown: 0
-  eKeyboardUp: 0
-  rKeyboard: 0
-  rKeyboardDown: 0
-  rKeyboardUp: 0
-  tKeyboard: 0
-  tKeyboardDown: 0
-  tKeyboardUp: 0
-  yKeyboard: 0
-  yKeyboardDown: 0
-  yKeyboardUp: 0
-  uKeyboard: 0
-  uKeyboardDown: 0
-  uKeyboardUp: 0
-  iKeyboard: 0
-  iKeyboardDown: 0
-  iKeyboardUp: 0
-  oKeyboard: 0
-  oKeyboardDown: 0
-  oKeyboardUp: 0
-  pKeyboard: 0
-  pKeyboardDown: 0
-  pKeyboardUp: 0
-  qKeyboard: 0
-  qKeyboardDown: 0
-  qKeyboardUp: 0
-  sKeyboard: 0
-  sKeyboardDown: 0
-  sKeyboardUp: 0
-  dKeyboard: 0
-  dKeyboardDown: 0
-  dKeyboardUp: 0
-  fKeyboard: 0
-  fKeyboardDown: 0
-  fKeyboardUp: 0
-  gKeyboard: 0
-  gKeyboardDown: 0
-  gKeyboardUp: 0
-  hKeyboard: 0
-  hKeyboardDown: 0
-  hKeyboardUp: 0
-  jKeyboard: 0
-  jKeyboardDown: 0
-  jKeyboardUp: 0
-  kKeyboard: 0
-  kKeyboardDown: 0
-  kKeyboardUp: 0
-  lKeyboard: 0
-  lKeyboardDown: 0
-  lKeyboardUp: 0
-  mKeyboard: 0
-  mKeyboardDown: 0
-  mKeyboardUp: 0
-  wKeyboard: 0
-  wKeyboardDown: 0
-  wKeyboardUp: 0
-  xKeyboard: 0
-  xKeyboardDown: 0
-  xKeyboardUp: 0
-  cKeyboard: 0
-  cKeyboardDown: 0
-  cKeyboardUp: 0
-  vKeyboard: 0
-  vKeyboardDown: 0
-  vKeyboardUp: 0
-  bKeyboard: 0
-  bKeyboardDown: 0
-  bKeyboardUp: 0
-  nKeyboard: 0
-  nKeyboardDown: 0
-  nKeyboardUp: 0
-  escape: 0
-  escapeDown: 0
-  escapeUp: 0
-  space: 0
-  spaceDown: 0
-  spaceUp: 0
 --- !u!1 &1334840454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,58 +792,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1396850979
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1396850980}
-  - component: {fileID: 1396850981}
-  m_Layer: 0
-  m_Name: SwitchControllerManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1396850980
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396850979}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1268434837}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1396850981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396850979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96a23b6703694841859200f081cfc3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kbAlphanumeriqueCanMakeSwitch: 1
-  kbDirectionalArrowCanMakeSwitch: 1
-  kbKeypadCanMakeSwitch: 1
-  kbLetresCanMakeSwitch: 1
-  kbSpecialKeysCanMakeSwitch: 1
-  mouseAxisCanMakeSwitch: 1
-  mouseButtonsCanMakeSwitch: 1
-  xboxControllerAxisCanMakeSwitch: 1
-  xboxControllerButtonsCanMakeSwitch: 1
 --- !u!4 &1581028581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8762738408896342160, guid: cdcbcd7e3c2867647ae338b94bb272b2,
@@ -1119,8 +826,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 819275579}
-  - {fileID: 900266049}
-  - {fileID: 1268434837}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1219,13 +924,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77575732932615d4aaa3a509a1f19c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1912875732}
-  targetToFocus: {fileID: 1581028581}
+  playerToFocus: {fileID: 1581028581}
   xOffset: 0
+<<<<<<< HEAD
   yOffset: 1
   screenShakeForce: 0.17
   screenShakeLength: 0.326
   speed: 5
+=======
+  yOffset: 0
+>>>>>>> parent of 2aa1252... Merge remote-tracking branch 'origin/master'
 --- !u!1001 &8762738408055159925
 PrefabInstance:
   m_ObjectHideFlags: 0
