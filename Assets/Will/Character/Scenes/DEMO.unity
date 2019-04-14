@@ -1223,8 +1223,8 @@ MonoBehaviour:
   targetToFocus: {fileID: 1581028581}
   xOffset: 0
   yOffset: 1
-  screenShakeForce: 0.144
-  screenShakeLength: 0.5
+  screenShakeForce: 0.17
+  screenShakeLength: 0.326
   speed: 5
 --- !u!1001 &8762738408055159925
 PrefabInstance:
