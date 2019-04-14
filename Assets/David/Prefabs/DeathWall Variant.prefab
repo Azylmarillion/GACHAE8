@@ -10,22 +10,22 @@ PrefabInstance:
     - target: {fileID: 4726543584727707161, guid: 9017d1cbe134c8c4dbfcc492873ce474,
         type: 3}
       propertyPath: m_Name
-      value: DeathWall
+      value: DeathWall Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4726543584727707164, guid: 9017d1cbe134c8c4dbfcc492873ce474,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4726543584727707164, guid: 9017d1cbe134c8c4dbfcc492873ce474,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -68
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4726543584727707164, guid: 9017d1cbe134c8c4dbfcc492873ce474,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.48696047
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4726543584727707164, guid: 9017d1cbe134c8c4dbfcc492873ce474,
         type: 3}
@@ -70,12 +70,17 @@ PrefabInstance:
     - target: {fileID: 4726543584727707164, guid: 9017d1cbe134c8c4dbfcc492873ce474,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.12
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 4726543584727707164, guid: 9017d1cbe134c8c4dbfcc492873ce474,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 6.1290092
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726543584727707164, guid: 9017d1cbe134c8c4dbfcc492873ce474,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4726543584727707163, guid: 9017d1cbe134c8c4dbfcc492873ce474,
         type: 3}
