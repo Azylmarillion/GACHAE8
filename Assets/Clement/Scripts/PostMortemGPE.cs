@@ -30,18 +30,9 @@ public class PostMortemGPE : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-<<<<<<< HEAD
         PlayerCharacter player = collision.GetComponent<PlayerCharacter>();
 
         if (player && m_CorpseToReveal)
-=======
-        if (GameManager.m_nbrCadavre >= 0)
-        {
-            Instantiate(m_MeshToReveal, collision.transform.position, new Quaternion(0, 0, 0, 0));
-            m_FailTrigger.enabled = false;
-        }
-        else
->>>>>>> master
         {
             GameManager.m_nbrCadavre--;
             GameManager.E_Death.Invoke();
