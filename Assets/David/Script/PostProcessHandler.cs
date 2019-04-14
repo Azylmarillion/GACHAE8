@@ -18,23 +18,16 @@ public class PostProcessHandler : MonoBehaviour
     {
         get
         {
-            return vignetteMaxSize;
+            return GameManager.m_VignetteMaxSize;
         }
-        set
-        {
-            vignetteMaxSize = GameManager.m_VignetteMaxSize;
-        }
+
     }
     [SerializeField]
     float vignetteMinSize
     {
         get
         {
-            return vignetteMinSize;
-        }
-        set
-        {
-            vignetteMinSize = GameManager.m_VignetteMinSize;
+            return GameManager.m_VignetteMinSize;
         }
     }
     [SerializeField]
