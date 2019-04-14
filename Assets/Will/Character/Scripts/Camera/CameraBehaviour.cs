@@ -10,7 +10,7 @@ public class CameraBehaviour : MonoBehaviour
     new Camera camera = null;
     [SerializeField]
     Transform targetToFocus;
-    [SerializeField, Range(0, 5)]
+    [SerializeField, Range(0, 20)]
     float xOffset, yOffset = 0;
     [SerializeField, Range(0, 1)]
     float screenShakeForce = .5f;
