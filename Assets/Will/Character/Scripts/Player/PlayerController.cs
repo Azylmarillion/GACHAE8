@@ -18,27 +18,7 @@ public class PlayerController : MonoBehaviour
 
     #region Meths
     #region PlayerBehaviour  
-    //void MakeMeCrouch(int _verticalAxisValue)
-    //{
-    //    if (_verticalAxisValue < -.2f && playerToControl.IsGrounded && !canCrouch && Mathf.Abs(horizontalMove) < .9f)
-    //    {
-    //        canCrouch = true;
-    //        playerRigidbody2D.velocity = Vector2.zero;
-    //        animatorPlayer.SetBool("MakeMeCrouch", true);
-    //        return;
-    //    }
-    //    else if (_verticalAxisValue < -.2f && playerToControl.IsGrounded && canCrouch)
-    //    {
-    //        canCrouch = true;
-    //        animatorPlayer.SetBool("MakeMeCrouch", true);
-    //    }
-    //    else if ((_verticalAxisValue > .2f || !playerToControl.IsGrounded || Mathf.Abs(horizontalMove) > .9f))
-    //    {
-    //        canCrouch = false;
-    //        animatorPlayer.SetBool("MakeMeCrouch", false);
-    //        return;
-    //    }
-    //}
+   
     void MakeMeJump(bool _doIt)
     {
         if (!_doIt) return;
@@ -73,7 +53,7 @@ public class PlayerController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        playerToControl.Move(horizontalMove, /*canCrouch,*/ canJump);
+        playerToControl.Move(horizontalMove, canJump);
         canJump = false;
     }
     void Start()
