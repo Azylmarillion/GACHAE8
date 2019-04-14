@@ -15,7 +15,7 @@ static public class GameManager
     public static bool m_PushPower = false;
     public static bool m_SightPower = false;
     public static bool m_ProjectPower = false;
-    public static Vector3 m_RespawnPoint = new Vector3(-8, 2, 0);
+    public static Vector3 m_RespawnPoint = new Vector3(0, 1, 0);
     public static int m_PickUpsGot = 0;
     public static float m_SaturationValue = -100f;
     public static float m_VignetteMaxSize = 0.5f;

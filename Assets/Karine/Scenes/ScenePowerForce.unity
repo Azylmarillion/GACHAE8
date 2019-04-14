@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -161,8 +161,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randMin: 0.1
   randMax: 0.3
-  vignetteMaxSize: 0.5
-  vignetteMinSize: 0.1
   profile: {fileID: 11400000, guid: 26862454480a3ff40b573bc6f4ae5e39, type: 2}
   vignettePulseSpeed: 0
   pingPongPulseOrGradual: 0
