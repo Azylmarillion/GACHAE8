@@ -22,6 +22,7 @@ public class PostProcessHandler : MonoBehaviour
         }
 
     }
+
     [SerializeField]
     float vignetteMinSize
     {
@@ -30,12 +31,11 @@ public class PostProcessHandler : MonoBehaviour
             return GameManager.m_VignetteMinSize;
         }
     }
+
     [SerializeField]
     private PostProcessProfile profile;
-    [SerializeField]
-    private float vignettePulseSpeed;
 
-    public bool pingPongPulseOrGradual;
+    protected float vignettePulseSpeed;
 
     protected bool vignetteOn = true;
 
@@ -86,11 +86,9 @@ public class PostProcessHandler : MonoBehaviour
 
         if (vignetteOn)
         {
-            //if (pingPongPulseOrGradual)
-            //    vignette.intensity.value = Mathf.PingPong(Time.time, 0.1f) + 0.4f;
 
-            if (!pingPongPulseOrGradual)
-            {
+
+
                 currentIntensity = Mathf.MoveTowards(vignette.intensity.value, targetIntensity, Time.deltaTime * vignettePulseSpeed);
                 if (currentIntensity >= vignetteMaxSize)
                 {
@@ -103,7 +101,7 @@ public class PostProcessHandler : MonoBehaviour
                     targetIntensity = vignetteMaxSize;
                 }
                 vignette.intensity.value = currentIntensity;
-            }
+            
         }
     }
 }
