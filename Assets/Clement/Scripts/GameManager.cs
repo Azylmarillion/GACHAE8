@@ -21,5 +21,10 @@ static public class GameManager
     public static float m_SaturationValue = -100f;
     public static float m_VignetteMaxSize = 0.5f;
     public static float m_VignetteMinSize = 0.3f;
-    public static int m_nbrCadavre = 3;
+<<<<<<< Updated upstream
+    public static int m_nbrCadavreMax = 3;
+    public static int m_nbrCadavre = m_nbrCadavreMax;
+=======
+
+>>>>>>> Stashed changes
 }

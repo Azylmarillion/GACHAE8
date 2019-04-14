@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    [SerializeField]
-    private float m_TimeObservedBeforeDying = 2;
+    [SerializeField]  private float m_TimeObservedBeforeDying = 2;
+    [SerializeField]  private GameObject m_StonePrefab = null;
     private float m_TimeSpentObserved;
-    [SerializeField]
-    private GameObject m_StonePrefab = null;
 
-// Start is called before the first frame update
-void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         m_TimeSpentObserved = 0;
     }
@@ -41,10 +39,12 @@ void Start()
         {
             Instantiate(m_StonePrefab, transform.position, Quaternion.identity);
         }
-
-        GameManager.E_Death.Invoke();
-        m_TimeSpentObserved = 0;
-        transform.position = GameManager.m_RespawnPoint;
-
+        if(GameManager.m_nbrCadavre >= 0)
+        {
+            transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
+            GameManager.E_Death.Invoke();
+            m_TimeSpentObserved = 0;
+            transform.position = GameManager.m_RespawnPoint;
+        }
     }
 }
