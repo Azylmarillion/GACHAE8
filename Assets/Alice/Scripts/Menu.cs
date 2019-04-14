@@ -101,14 +101,21 @@ public class Menu : MonoBehaviour
     {
         m_Credits.SetActive(false);
     }
+<<<<<<< HEAD
+}
+
+public void Quit()
+{
+=======
 
     public void Quit()
     {
+>>>>>>> master
 #if UNITY_EDITOR
 
-        UnityEditor.EditorApplication.isPlaying = false;
- #else
+    UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
 #endif
-    }
+}
 }
