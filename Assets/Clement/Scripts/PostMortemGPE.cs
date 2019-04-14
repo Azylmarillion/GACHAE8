@@ -26,17 +26,25 @@ public class PostMortemGPE : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameManager.m_nbrCadavre--;
         GameManager.E_Death.Invoke();
         collision.transform.position = GameManager.m_RespawnPoint;
+        Debug.Log(GameManager.m_nbrCadavre);
 
-        m_MeshToReveal.SetActive(true);
-        m_FailTrigger.enabled = false;
+        if (GameManager.m_nbrCadavre >= 0)
+        {
+            m_MeshToReveal.SetActive(true);
+            m_FailTrigger.enabled = false;
+        } else
+        {
+            Debug.Log("Vous êtes mort");
+        }
 
     }
 
     private void OnPlayerDeath()
     {
-        m_MeshToReveal.SetActive(false);
-        m_FailTrigger.enabled = true;
+       // m_MeshToReveal.SetActive(false);
+       // m_FailTrigger.enabled = true;
     }
 }

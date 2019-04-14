@@ -9,11 +9,13 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject m_OptionMenu;
     [SerializeField] private GameObject m_ControlsMenu;
     [SerializeField] private GameObject m_PauseMenu;
+    [SerializeField] private GameObject m_Credits;
+    [SerializeField] private AudioSource m_audioSourceScene;
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && SceneManager.GetActiveScene().name != "SceneAlice")
+        if(Input.GetKeyDown(KeyCode.A) && SceneManager.GetActiveScene().name != "SceneAlice")
         {
             ManagePauseMenu();
         }
@@ -26,11 +28,11 @@ public class Menu : MonoBehaviour
 
     public void ManagePauseMenu()
     {
-        if (!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
+        if(!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
         {
             m_PauseMenu.SetActive(!m_PauseMenu.activeInHierarchy);
         }
-
+      
     }
 
     public void Resume()
@@ -43,26 +45,20 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("SceneAlice");
     }
 
+    #region OPTIONS
     public void OpenOptions()
     {
         m_OptionMenu.SetActive(true);
     }
 
-    public void CloseOptions()
+    public void SetVolume(float _volume)
     {
-        m_OptionMenu.SetActive(false);
+        m_audioSourceScene.volume = _volume;
     }
 
-    public void OpenControls()
+    public void SetQuality(int _qualityIndex)
     {
-        m_OptionMenu.SetActive(false);
-        m_ControlsMenu.SetActive(true);
-    }
-
-    public void CloseControls()
-    {
-        m_ControlsMenu.SetActive(false);
-        m_OptionMenu.SetActive(true);
+        QualitySettings.SetQualityLevel(_qualityIndex);
     }
 
     public void ScreenManager(bool _wantFullScreen)
@@ -77,10 +73,44 @@ public class Menu : MonoBehaviour
         }
 
     }
+
+    public void CloseOptions()
+    {
+        m_OptionMenu.SetActive(false);
+    }
+    #endregion
+
+    public void OpenControls()
+    {
+        m_OptionMenu.SetActive(false);
+        m_ControlsMenu.SetActive(true);
+    }
+
+    public void CloseControls()
+    {
+        m_ControlsMenu.SetActive(false);
+        m_OptionMenu.SetActive(true);
+    }
+
+    public void OpenCredits()
+    {
+        m_Credits.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        m_Credits.SetActive(false);
+    }
+<<<<<<< HEAD
 }
 
 public void Quit()
 {
+=======
+
+    public void Quit()
+    {
+>>>>>>> master
 #if UNITY_EDITOR
 
     UnityEditor.EditorApplication.isPlaying = false;
