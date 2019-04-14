@@ -71,6 +71,14 @@ public class PlayerController : MonoBehaviour
         {
             animatorPlayer = gameObject.GetComponent<Animator>();
         }
-    } 
+
+        GameManager.E_Death.AddListener(OnDeath);
+    }
+
+    private void OnDeath()
+    {
+        CameraBehaviour.Instance.ScreenShake();
+    }
+
     #endregion
 }
