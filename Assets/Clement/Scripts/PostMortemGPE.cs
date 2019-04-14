@@ -36,7 +36,7 @@ public class PostMortemGPE : MonoBehaviour
 
     private void OnPlayerDeath()
     {
-        m_MeshToReveal.SetActive(false);
-        m_FailTrigger.enabled = true;
+       // m_MeshToReveal.SetActive(false);
+       // m_FailTrigger.enabled = true;
     }
 }

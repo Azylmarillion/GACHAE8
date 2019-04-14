@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     MyCharacterController2D playerToControl;
     [SerializeField]
     Rigidbody2D playerRigidbody2D;
+    
     float horizontalMove = 0f;
     bool canJump = false;
     bool canCrouch = false;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         KeyboardInputsManager.OnSpaceClickDownInputPress += MakeMeJump;
         
     }
+
     void FixedUpdate()
     {
         MakeMeMove(Input.GetAxis("Horizontal"));
@@ -73,6 +75,13 @@ public class PlayerController : MonoBehaviour
         {
             animatorPlayer = gameObject.GetComponent<Animator>();
         }
+        GameManager.E_Death.AddListener(OnDeath);
     } 
+
+    private void OnDeath()
+    {
+        CameraBehaviour.Instance.ScreenShake();
+    }
+
     #endregion
 }
