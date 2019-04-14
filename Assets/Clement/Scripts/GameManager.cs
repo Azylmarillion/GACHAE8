@@ -23,5 +23,4 @@ static public class GameManager
     public static float m_VignetteMinSize = 0.3f;
     public static int m_nbrCadavreMax = 3;
     public static int m_nbrCadavre = m_nbrCadavreMax;
-
 }

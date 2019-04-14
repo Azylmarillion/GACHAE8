@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    [SerializeField]  private float m_TimeObservedBeforeDying = 2;
-    [SerializeField]  private GameObject m_StonePrefab = null;
+    [SerializeField] private float m_TimeObservedBeforeDying = 2;
+    [SerializeField] private GameObject m_StonePrefab = null;
+    private Vector3 m_OriginalScale = Vector3.zero;
     private float m_TimeSpentObserved;
+    public List<GameObject> m_corpses;
+    GameObject m_MeshInstance = null;
 
-    // Start is called before the first frame update
     void Start()
     {
         m_TimeSpentObserved = 0;
+        m_OriginalScale = transform.localScale;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (m_TimeSpentObserved >= m_TimeObservedBeforeDying)
@@ -35,16 +37,38 @@ public class PlayerCharacter : MonoBehaviour
 
     private void TurnIntoStone()
     {
-        if (m_StonePrefab != null)
+        GameManager.m_nbrCadavre--;
+        GameManager.E_Death.Invoke();
+        transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
+
+        if (m_StonePrefab != null && GameManager.m_nbrCadavre >= 0)
         {
-            Instantiate(m_StonePrefab, transform.position, Quaternion.identity);
+            m_corpses.Add(Instantiate(m_StonePrefab, transform.position, Quaternion.identity));
         }
-        if(GameManager.m_nbrCadavre >= 0)
+        else
         {
-            transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
-            GameManager.E_Death.Invoke();
-            m_TimeSpentObserved = 0;
-            transform.position = GameManager.m_RespawnPoint;
+            IsGameOver();
+        }
+
+        transform.position = GameManager.m_RespawnPoint;
+        m_TimeSpentObserved = 0;
+    }
+
+    public void IsGameOver()
+    {
+        if (GameManager.m_nbrCadavre < 0)
+        {
+            //GameOver HUD
+
+            for (int i = 0; i < m_corpses.Count; i++)
+            {
+                Destroy(m_corpses[i]);
+            }
+
+            m_corpses.Clear();
+            GameManager.m_nbrCadavre = GameManager.m_nbrCadavreMax;
+            transform.localScale = m_OriginalScale;
+
         }
     }
 }

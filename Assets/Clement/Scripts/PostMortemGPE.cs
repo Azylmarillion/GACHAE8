@@ -6,16 +6,20 @@ using UnityEngine.Events;
 public class PostMortemGPE : MonoBehaviour
 {
     [SerializeField]
-    GameObject m_MeshToReveal;
+    GameObject m_CorpseToReveal;
     BoxCollider2D m_FailTrigger;
-
+    GameObject m_CorpseInstance = null;
 
     // Start is called before the first frame update
     void Start()
     {
         m_FailTrigger = GetComponent<BoxCollider2D>();
-        m_MeshToReveal.SetActive(false);
         GameManager.E_Death.AddListener(OnPlayerDeath);
+
+        if (!m_CorpseToReveal)
+        {
+            Debug.Log("You need to put a MeshToReveal in the PostMortemGPE (a corpse) for it to work.");
+        }
     }
 
     // Update is called once per frame
@@ -26,25 +30,32 @@ public class PostMortemGPE : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameManager.m_nbrCadavre--;
-        GameManager.E_Death.Invoke();
-        collision.transform.position = GameManager.m_RespawnPoint;
-        Debug.Log(GameManager.m_nbrCadavre);
+        PlayerCharacter player = collision.GetComponent<PlayerCharacter>();
 
-        if (GameManager.m_nbrCadavre >= 0)
+        if (player && m_CorpseToReveal)
         {
-            m_MeshToReveal.SetActive(true);
-            m_FailTrigger.enabled = false;
-        } else
-        {
-            Debug.Log("Vous êtes mort");
+            GameManager.m_nbrCadavre--;
+            GameManager.E_Death.Invoke();
+            collision.transform.position = GameManager.m_RespawnPoint;
+            collision.transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f); 
+
+            if (GameManager.m_nbrCadavre >= 0)
+            {
+                m_CorpseInstance = Instantiate(m_CorpseToReveal, transform.position, transform.rotation);
+                player.m_corpses.Add(m_CorpseInstance);
+            }
+
+            else
+            {
+                player.IsGameOver();
+            }
         }
 
     }
 
     private void OnPlayerDeath()
     {
-       // m_MeshToReveal.SetActive(false);
-       // m_FailTrigger.enabled = true;
+        // m_MeshToReveal.SetActive(false);
+        // m_FailTrigger.enabled = true;
     }
 }
