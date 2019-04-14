@@ -33,18 +33,24 @@ public class GetObject : MonoBehaviour
                     case 1:
                         GameManager.m_PushPower = true;
                         GameManager.m_PickUpsGot += 1;
+                        GameManager.m_VignetteMaxSize = 0.3f;
+                        GameManager.m_VignetteMinSize = 0.1f;
                         Debug.Log("Push Got");
                         pickedUp = true;
                         break;
                     case 2:
                         GameManager.m_SightPower = true;
                         GameManager.m_PickUpsGot += 1;
+                        GameManager.m_VignetteMaxSize = 0f;
+                        GameManager.m_VignetteMinSize = 0f;
+                        GameManager.m_SaturationValue = -30f;
                         Debug.Log("Sight Got");
                         pickedUp = true;
                         break;
                     case 3:
                         GameManager.m_ProjectPower = true;
                         GameManager.m_PickUpsGot += 1;
+                        GameManager.m_SaturationValue = 0f;
                         Debug.Log("Projectil Got");
                         pickedUp = true;
                         break;
