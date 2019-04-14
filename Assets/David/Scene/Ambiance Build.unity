@@ -142,10 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7e30b2bd1a8f54d82f7bbea8a552ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randMin: 0.1
+  randMax: 0.3
   profile: {fileID: 11400000, guid: 26862454480a3ff40b573bc6f4ae5e39, type: 2}
   vignettePulseSpeed: 0
-  pingPongPulse: 0
-  gradualPulse: 0
+  pingPongPulseOrGradual: 0
 --- !u!114 &33456358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +283,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -515,7 +516,7 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0, g: 0, b: 0, a: 0.4392157}
+      minColor: {r: 1, g: 1, b: 1, a: 0.4392157}
       maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
@@ -953,7 +954,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 4
     angle: 9.46
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
