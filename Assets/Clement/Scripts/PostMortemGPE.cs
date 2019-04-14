@@ -30,7 +30,8 @@ public class PostMortemGPE : MonoBehaviour
         GameManager.E_Death.Invoke();
         collision.transform.position = GameManager.m_RespawnPoint;
         Debug.Log(GameManager.m_nbrCadavre);
-        if (GameManager.m_nbrCadavre <= 3 && GameManager.m_nbrCadavre >= 0)
+
+        if (GameManager.m_nbrCadavre >= 0)
         {
             m_MeshToReveal.SetActive(true);
             m_FailTrigger.enabled = false;
