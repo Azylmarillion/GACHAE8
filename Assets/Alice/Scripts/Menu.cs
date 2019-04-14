@@ -15,7 +15,7 @@
 
 //    private void Update()
 //    {
-//        if(Input.GetKeyDown(KeyCode.A) && SceneManager.GetActiveScene().name != "SceneAlice")
+//        if (Input.GetKeyDown(KeyCode.A) && SceneManager.GetActiveScene().name != "SceneAlice")
 //        {
 //            ManagePauseMenu();
 //        }
@@ -28,11 +28,11 @@
 
 //    public void ManagePauseMenu()
 //    {
-//        if(!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
+//        if (!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
 //        {
 //            m_PauseMenu.SetActive(!m_PauseMenu.activeInHierarchy);
 //        }
-      
+
 //    }
 
 //    public void Resume()
@@ -101,16 +101,12 @@
 //    {
 //        m_Credits.SetActive(false);
 //    }
-//<<<<<<< HEAD
 //}
 
 //public void Quit()
 //{
-//=======
-
 //    public void Quit()
 //    {
-//>>>>>>> master
 //#if UNITY_EDITOR
 
 //    UnityEditor.EditorApplication.isPlaying = false;
