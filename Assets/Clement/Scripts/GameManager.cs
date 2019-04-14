@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 static public class GameManager
 {
+    // This game manager is the ugliest thing i've ever seen
+    // But it's okay, it's a GameJam :)
+
     public static UnityEvent E_Death = new UnityEvent();
 
     public static bool m_JumpSpeedPower = false;
