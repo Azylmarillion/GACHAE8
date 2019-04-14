@@ -13,6 +13,8 @@ public class PostProcessHandler : MonoBehaviour
 
     public bool pingPongPulseOrGradual;
 
+    protected bool vignetteOn = true;
+
     protected float currentIntensity;
 
     protected float targetIntensity;
@@ -26,31 +28,46 @@ public class PostProcessHandler : MonoBehaviour
     {
         profile.TryGetSettings<ColorGrading>(out colorGrading);
         profile.TryGetSettings<Vignette>(out vignette);
+        if (profile == null)
+        {
+            if (GetComponent<PostProcessProfile>())
+            {
+                profile = GetComponent<PostProcessProfile>();
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
         vignettePulseSpeed = Random.Range(0.1f, 0.5f);
-        if(colorGrading.saturation.value > -99)
-            colorGrading.saturation.value -= 1;
 
-        if(pingPongPulseOrGradual)
-            vignette.intensity.value = Mathf.PingPong(Time.time, 0.1f) + 0.4f;
-
-        if (!pingPongPulseOrGradual)
+        if (GameManager.m_JumpSpeedPower && colorGrading.saturation.value < 0)
         {
-            currentIntensity = Mathf.MoveTowards(vignette.intensity.value, targetIntensity, Time.deltaTime * vignettePulseSpeed);
-            if(currentIntensity>= 0.5f)
+            colorGrading.saturation.value += 1;
+        }
+
+        if (vignetteOn)
+        {
+            if (pingPongPulseOrGradual)
+                vignette.intensity.value = Mathf.PingPong(Time.time, 0.1f) + 0.4f;
+
+            if (!pingPongPulseOrGradual)
             {
-                currentIntensity = 0.5f;
-                targetIntensity = 0.3f;
-            }else if(currentIntensity <= 0.3f)
-            {
-                currentIntensity = 0.3f;
-                targetIntensity = 0.5f;
+                currentIntensity = Mathf.MoveTowards(vignette.intensity.value, targetIntensity, Time.deltaTime * vignettePulseSpeed);
+                if (currentIntensity >= 0.5f)
+                {
+                    currentIntensity = 0.5f;
+                    targetIntensity = 0.3f;
+                }
+                else if (currentIntensity <= 0.3f)
+                {
+                    currentIntensity = 0.3f;
+                    targetIntensity = 0.5f;
+                }
+                vignette.intensity.value = currentIntensity;
             }
-            vignette.intensity.value = currentIntensity;
-        } 
+        }
     }
 }

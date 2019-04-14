@@ -5,15 +5,47 @@ using UnityEngine.UI;
 
 public class GetObject : MonoBehaviour
 {
-    public Text ObjectText;
+    [SerializeField]
+    private Text objectText;
 
-    private void OnTriggerEnter(Collider other)
+    protected bool pickedUp = false;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(other.CompareTag("Player"))
-        {
-            ObjectText.text = "Vous avez récupéré " + gameObject.name;
-            gameObject.SetActive(false);
 
+        if (collision.CompareTag("Player"))
+        {
+            if (objectText != null)
+            {
+                objectText.text = "Vous avez récupéré " + gameObject.name;
+                gameObject.SetActive(false);
+            }
+            if (!pickedUp)
+            {
+                switch (GameManager.m_PickUpsGot)
+                {
+                    case 0:
+                        GameManager.m_JumpSpeedPower = true;
+                        GameManager.m_PickUpsGot += 1;
+                        Debug.Log("Jump & Speed Got");
+                        break;
+                    case 1:
+                        GameManager.m_PushPower = true;
+                        GameManager.m_PickUpsGot += 1;
+                        Debug.Log("Push Got");
+                        break;
+                    case 2:
+                        GameManager.m_SightPower = true;
+                        GameManager.m_PickUpsGot += 1;
+                        Debug.Log("Sight Got");
+                        break;
+                    case 3:
+                        GameManager.m_ProjectPower = true;
+                        GameManager.m_PickUpsGot += 1;
+                        Debug.Log("Projectil Got");
+                        break;
+                }
+            }
         }
     }
 
