@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour
         MakeMeMove(Input.GetAxis("Horizontal"));
         playerToControl.Move(horizontalMove, canJump);
         canJump = false;
+        if (GameManager.m_JumpSpeedPower)
+        {
+            playerToControl.moveSpeed = 12f;
+            playerToControl.jumpForce = 300f;
+        }
     }
     void Start()
     {

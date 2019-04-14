@@ -12,7 +12,6 @@ public class GetObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.CompareTag("Player"))
         {
             if (objectText != null)
@@ -27,22 +26,27 @@ public class GetObject : MonoBehaviour
                     case 0:
                         GameManager.m_JumpSpeedPower = true;
                         GameManager.m_PickUpsGot += 1;
+                        GameManager.m_SaturationValue = -75;
                         Debug.Log("Jump & Speed Got");
+                        pickedUp = true;
                         break;
                     case 1:
                         GameManager.m_PushPower = true;
                         GameManager.m_PickUpsGot += 1;
                         Debug.Log("Push Got");
+                        pickedUp = true;
                         break;
                     case 2:
                         GameManager.m_SightPower = true;
                         GameManager.m_PickUpsGot += 1;
                         Debug.Log("Sight Got");
+                        pickedUp = true;
                         break;
                     case 3:
                         GameManager.m_ProjectPower = true;
                         GameManager.m_PickUpsGot += 1;
                         Debug.Log("Projectil Got");
+                        pickedUp = true;
                         break;
                 }
             }
