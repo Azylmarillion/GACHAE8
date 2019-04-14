@@ -10,10 +10,26 @@ public class PostProcessHandler : MonoBehaviour
     float randMin = .1f;
     [SerializeField,Range(.1f,1)]
     float randMax = .3f;
-    [SerializeField, Range( 0f, 1)]
-    float vignetteMaxSize = 0.5f;
-    [SerializeField, Range(0f, 1)]
-    float vignetteMinSize = 0.1f;
+    /*[SerializeField, Range( 0f, 1)]
+    float vignetteMaxSize = 0.5f;*/
+
+    [SerializeField]
+    private float vignetteMaxSize
+    {
+        get
+        {
+            return GameManager.m_VignetteMaxSize;
+        }
+
+    }
+    [SerializeField]
+    float vignetteMinSize
+    {
+        get
+        {
+            return GameManager.m_VignetteMinSize;
+        }
+    }
     [SerializeField]
     private PostProcessProfile profile;
     [SerializeField]
