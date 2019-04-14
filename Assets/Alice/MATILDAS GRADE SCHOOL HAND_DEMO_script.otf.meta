@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c7a420049be311944a622be0f6d788fe
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MATILDAS GRADE SCHOOL HAND_DEMO_script
+  fontNames:
+  - MATILDAS GRADE SCHOOL HAND_DEMO_script
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
