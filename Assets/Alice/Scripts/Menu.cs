@@ -9,6 +9,8 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject m_OptionMenu;
     [SerializeField] private GameObject m_ControlsMenu;
     [SerializeField] private GameObject m_PauseMenu;
+    [SerializeField] private GameObject m_Credits;
+    [SerializeField] private AudioSource m_audioSourceScene;
 
 
     private void Update()
@@ -43,15 +45,40 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("SceneAlice");
     }
 
+    #region OPTIONS
     public void OpenOptions()
     {
         m_OptionMenu.SetActive(true);
+    }
+
+    public void SetVolume(float _volume)
+    {
+        m_audioSourceScene.volume = _volume;
+    }
+
+    public void SetQuality(int _qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(_qualityIndex);
+    }
+
+    public void ScreenManager(bool _wantFullScreen)
+    {
+        if (_wantFullScreen && !Screen.fullScreen)
+        {
+            Screen.fullScreen = true;
+        }
+        else if (!_wantFullScreen && Screen.fullScreen)
+        {
+            Screen.fullScreen = false;
+        }
+
     }
 
     public void CloseOptions()
     {
         m_OptionMenu.SetActive(false);
     }
+    #endregion
 
     public void OpenControls()
     {
@@ -63,6 +90,16 @@ public class Menu : MonoBehaviour
     {
         m_ControlsMenu.SetActive(false);
         m_OptionMenu.SetActive(true);
+    }
+
+    public void OpenCredits()
+    {
+        m_Credits.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        m_Credits.SetActive(false);
     }
 
     public void Quit()
