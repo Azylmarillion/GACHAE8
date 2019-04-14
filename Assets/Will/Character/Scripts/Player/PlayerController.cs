@@ -17,8 +17,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Meths
-    #region PlayerBehaviour  
-   
+    #region PlayerBehaviour     
     void MakeMeJump(bool _doIt)
     {
         if (!_doIt) return;
@@ -31,7 +30,7 @@ public class PlayerController : MonoBehaviour
         horizontalMove = _horizontalMove;
         //animatorPlayer.SetFloat("MakeMeWalk", Mathf.Abs(_horizontalMove));
         //if (!playerToControl.IsGrounded) animatorPlayer.SetBool("MakeMeJump", true);        
-    }
+    }    
     #endregion
     #region Events
     public void OnLanding()
@@ -50,9 +49,12 @@ public class PlayerController : MonoBehaviour
     {        
         XboxControllerInputManagerWindows.OnADownInputPress += MakeMeJump;
         XboxControllerInputManagerWindows.OnHorizontalAxisInput += MakeMeMove;
+        KeyboardInputsManager.OnSpaceClickDownInputPress += MakeMeJump;
+        
     }
     void FixedUpdate()
     {
+        MakeMeMove(Input.GetAxis("Horizontal"));
         playerToControl.Move(horizontalMove, canJump);
         canJump = false;
     }
