@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class MyCharacterController2D : MonoBehaviour
 {
     #region F/P    
+    public static MyCharacterController2D Instance = null;
     const float CEILINGRADIUS = .02f;
     const float GROUNDEDRADIUS = .2f;
     [SerializeField,Range(0, 1000)]
@@ -76,6 +77,16 @@ public class MyCharacterController2D : MonoBehaviour
 
         if (OnLandEvent == null)
             OnLandEvent = new UnityEvent();
+        if (!Instance)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.Log("There's already an instance in the scene !!");
+            Destroy(this);
+            return;
+        }
     }
 
     void FixedUpdate()
@@ -94,7 +105,11 @@ public class MyCharacterController2D : MonoBehaviour
             }
         }
     }
-     void Start()
+    void OnDestroy()
+    {
+        Instance = null;
+    }
+    void Start()
     {
         if (!playerRigidbody2D)
         {

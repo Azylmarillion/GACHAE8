@@ -15,6 +15,7 @@ using UnityEngine;
  */
 
 #pragma warning disable 0414
+#pragma warning disable 0067
 public class XboxControllerInputManagerMAC : MonoBehaviour
 {
     #region F/P

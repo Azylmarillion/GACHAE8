@@ -5,7 +5,12 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class PostProcessHandler : MonoBehaviour
 {
-
+    //
+    [SerializeField, Range(.1f, 1)]
+    float randMin = .1f;
+    [SerializeField,Range(.1f,1)]
+    float randMax = .3f;
+    //
     [SerializeField]
     private PostProcessProfile profile;
     [SerializeField]
@@ -23,6 +28,18 @@ public class PostProcessHandler : MonoBehaviour
 
     protected Vignette vignette = null;
 
+    void Init(bool _doIt)
+    {
+        if (!_doIt) return;
+        GameManager.m_JumpSpeedPower = false;
+        colorGrading.saturation.value = -100;
+    }
+
+
+    private void Awake()
+    {
+        XboxControllerInputManagerWindows.OnRightBumperDownInputPress += Init;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +58,7 @@ public class PostProcessHandler : MonoBehaviour
     void Update()
     {
 
-        vignettePulseSpeed = Random.Range(0.1f, 0.5f);
+        vignettePulseSpeed = Random.Range(randMin, randMax);
 
         if (GameManager.m_JumpSpeedPower && colorGrading.saturation.value < 0)
         {
@@ -50,8 +67,8 @@ public class PostProcessHandler : MonoBehaviour
 
         if (vignetteOn)
         {
-            if (pingPongPulseOrGradual)
-                vignette.intensity.value = Mathf.PingPong(Time.time, 0.1f) + 0.4f;
+            //if (pingPongPulseOrGradual)
+            //    vignette.intensity.value = Mathf.PingPong(Time.time, 0.1f) + 0.4f;
 
             if (!pingPongPulseOrGradual)
             {

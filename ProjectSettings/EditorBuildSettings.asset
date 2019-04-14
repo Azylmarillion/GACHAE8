@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Alice/Scenes/SceneAlice.unity
-    guid: 98b3ded149f4e204fbc73c225beb8359
-  - enabled: 1
-    path: Assets/Karine/Test.unity
-    guid: c4b86ae2f99ff9a4ebe6d38293ada5e2
+    path: Assets/Clement/Scenes/PlayScene.unity
+    guid: 61e71acb309e29644a89f573ac246ba2
   m_configObjects: {}
