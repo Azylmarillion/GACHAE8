@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1209,6 +1209,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 154
       objectReference: {fileID: 0}
+    - target: {fileID: 7954918386808180237, guid: 02cf6171868555148905f6c0bcd03627,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 7954918386808180237, guid: 02cf6171868555148905f6c0bcd03627,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7954918386808180238, guid: 02cf6171868555148905f6c0bcd03627,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1238,6 +1248,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954918386378957732, guid: 02cf6171868555148905f6c0bcd03627,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954918386378957732, guid: 02cf6171868555148905f6c0bcd03627,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954918386378957732, guid: 02cf6171868555148905f6c0bcd03627,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7954918386484107411, guid: 02cf6171868555148905f6c0bcd03627,
         type: 3}
