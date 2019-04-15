@@ -58,7 +58,8 @@ public class GetObject : MonoBehaviour
                         pickedUp = true;
                         break;
                 }
-                
+                particles.Play();
+                GetComponent<SpriteRenderer>().enabled = false;
             }
         }
     }
