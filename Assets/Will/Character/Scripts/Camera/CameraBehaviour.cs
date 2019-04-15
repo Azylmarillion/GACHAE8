@@ -24,7 +24,6 @@ public class CameraBehaviour : MonoBehaviour
     private float cameraGeneralViewSize;
     private float cameraOriginalSize;
     private Vector3 cameraOriginalPosition;
-    [SerializeField]
     private float cameraViewshiftSpeed;
     private float cameraViewshiftChrono = 0;
     private bool isCameraToggled;
@@ -46,10 +45,11 @@ public class CameraBehaviour : MonoBehaviour
     {
         StartCoroutine(ScreenShakeCoroutine());
     }
-    public void ToggleGeneralView()
+    public void ToggleGeneralView(float _time)
     {
         isCameraToggled = true;
         cameraViewshiftChrono = 0;
+        cameraViewshiftSpeed = _time;
         cameraOriginalPosition = transform.position;
     }
     public void UntoggleGeneralView()

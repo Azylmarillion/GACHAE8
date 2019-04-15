@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField] private float m_TimeObservedBeforeDying = 2;
     [SerializeField] private GameObject m_StonePrefab = null;
+    [SerializeField] private Image m_LittleDoll;
+    [SerializeField] private Image m_MediumDoll;
+    [SerializeField] private Image m_BigDoll;
+    [SerializeField] private GameObject m_GameOverCanvas;
     private Vector3 m_OriginalScale = Vector3.zero;
     private float m_TimeSpentObserved;
     public List<GameObject> m_corpses;
@@ -28,7 +33,6 @@ public class PlayerCharacter : MonoBehaviour
         {
             m_TimeSpentObserved += Time.fixedDeltaTime;
         }
-
         else
         {
             m_TimeSpentObserved = 0;
@@ -45,10 +49,12 @@ public class PlayerCharacter : MonoBehaviour
         {
             m_corpses.Add(Instantiate(m_StonePrefab, transform.position, Quaternion.identity));
         }
-        else
+       else
         {
             IsGameOver();
         }
+
+        FeedBackTrace();
 
         transform.position = GameManager.m_RespawnPoint;
         m_TimeSpentObserved = 0;
@@ -58,7 +64,8 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (GameManager.m_nbrCadavre < 0)
         {
-            //GameOver HUD
+            Time.timeScale = 0;
+            m_GameOverCanvas.SetActive(true);
 
             for (int i = 0; i < m_corpses.Count; i++)
             {
@@ -70,5 +77,22 @@ public class PlayerCharacter : MonoBehaviour
             transform.localScale = m_OriginalScale;
 
         }
+    }
+
+    public void FeedBackTrace()
+    {
+        if(GameManager.m_nbrCadavre == 2)
+        {
+            m_BigDoll.enabled = false;
+        }
+        else if(GameManager.m_nbrCadavre == 1)
+        {
+            m_MediumDoll.enabled = false;
+        }
+        else if(GameManager.m_nbrCadavre < 1)
+        {
+            m_LittleDoll.enabled = false;
+        }
+        
     }
 }

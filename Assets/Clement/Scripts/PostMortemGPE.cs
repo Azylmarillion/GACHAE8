@@ -51,9 +51,9 @@ public class PostMortemGPE : MonoBehaviour
             {
                 player.IsGameOver();
             }
+
+            player.FeedBackTrace();
         }
-
-
     }
 
     private void OnPlayerDeath()

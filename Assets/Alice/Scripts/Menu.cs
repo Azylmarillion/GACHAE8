@@ -40,6 +40,11 @@ public class Menu : MonoBehaviour
         m_PauseMenu.SetActive(false);
     }
 
+    public void Restart()
+    {
+        //A L'AIDE A VOIR
+    }
+
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("SceneAlice");
