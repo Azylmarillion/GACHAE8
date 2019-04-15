@@ -5,20 +5,17 @@ using UnityEngine.Events;
 
 public class PostMortemGPE : MonoBehaviour
 {
-    [SerializeField]
-    GameObject m_CorpseToReveal;
-    BoxCollider2D m_FailTrigger;
-    GameObject m_CorpseInstance = null;
+    float m_KillBufferTime = 1;
+    bool m_CanKill = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_FailTrigger = GetComponent<BoxCollider2D>();
-        GameManager.E_Death.AddListener(OnPlayerDeath);
+        BoxCollider2D failTrigger = GetComponent<BoxCollider2D>();
 
-        if (!m_CorpseToReveal)
+        if (!failTrigger)
         {
-            Debug.Log("You need to put a MeshToReveal in the PostMortemGPE (a corpse) for it to work.");
+            Debug.Log("You need to put a BoxCollider2D in the PostMortemGPE for it to work.");
         }
     }
 
@@ -30,35 +27,20 @@ public class PostMortemGPE : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerCharacter player = collision.GetComponent<PlayerCharacter>();
-
-        if (player && m_CorpseToReveal)
+        if (collision.CompareTag("Player") && m_CanKill)
         {
-            GameManager.m_nbrCadavre--;
-            GameManager.m_SaturationValue -= 25f;
-            GameManager.m_VignetteMaxSize += 0.2f;
-            GameManager.m_VignetteMinSize += 0.1f;
             GameManager.E_Death.Invoke();
-            collision.transform.position = GameManager.m_RespawnPoint;
-
-            if (GameManager.m_nbrCadavre >= 0)
-            {
-                m_CorpseInstance = Instantiate(m_CorpseToReveal, transform.position, transform.rotation);
-                player.m_corpses.Add(m_CorpseInstance);
-            }
-
-            else
-            {
-                player.IsGameOver();
-            }
-
-            player.FeedBackTrace();
+            m_CanKill = false;
+            StartCoroutine(KillBuffer(m_KillBufferTime));
         }
+
+
     }
 
-    private void OnPlayerDeath()
+    // This was set up because it was detecting both triggers of the player, and it was killing twice
+    private IEnumerator KillBuffer(float _Wait)
     {
-        // m_MeshToReveal.SetActive(false);
-        // m_FailTrigger.enabled = true;
+        yield return new WaitForSeconds(_Wait);
+        m_CanKill = true;
     }
 }

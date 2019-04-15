@@ -2417,6 +2417,12 @@ PrefabInstance:
       propertyPath: m_GameOverCanvas
       value: 
       objectReference: {fileID: 296557383}
+    - target: {fileID: 1382465534041187758, guid: a1ca9ee7d4298034fa48be1da7c98494,
+        type: 3}
+      propertyPath: m_DeadBodyPrefab
+      value: 
+      objectReference: {fileID: 8790939606420864140, guid: 0d578def3e94b54418bfcc1551d229bc,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ca9ee7d4298034fa48be1da7c98494, type: 3}
 --- !u!1 &359591160

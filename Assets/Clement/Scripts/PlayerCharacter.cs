@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField] private float m_TimeObservedBeforeDying = 2;
-    [SerializeField] private GameObject m_StonePrefab = null;
+    [SerializeField] private GameObject m_DeadBodyPrefab = null;
     [SerializeField] private Image m_LittleDoll;
     [SerializeField] private Image m_MediumDoll;
     [SerializeField] private Image m_BigDoll;
@@ -18,7 +18,13 @@ public class PlayerCharacter : MonoBehaviour
 
     void Start()
     {
+        if (!m_DeadBodyPrefab)
+        {
+            Debug.Log("You need to put a DeadBodyPrefab in the PlayerCharacter (a corpse) for it to work.");
+        }
+
         m_TimeSpentObserved = 0;
+        GameManager.E_Death.AddListener(OnPlayerDeath);
         m_OriginalScale = transform.localScale;
     }
 
@@ -39,24 +45,35 @@ public class PlayerCharacter : MonoBehaviour
         }
     }
 
-    private void TurnIntoStone()
+    private void OnPlayerDeath()
     {
         GameManager.m_nbrCadavre--;
-        GameManager.E_Death.Invoke();
-        transform.localScale -= new Vector3(0.2f, 0.2f, 0.2f);
+        GameManager.m_SaturationValue -= 25f;
+        GameManager.m_VignetteMaxSize += 0.2f;
+        GameManager.m_VignetteMinSize += 0.1f;
 
-        if (m_StonePrefab != null && GameManager.m_nbrCadavre >= 0)
+        if (m_DeadBodyPrefab != null && GameManager.m_nbrCadavre >= 0)
         {
-            m_corpses.Add(Instantiate(m_StonePrefab, transform.position, Quaternion.identity));
+            GameObject corpse = Instantiate(m_DeadBodyPrefab, transform.position, Quaternion.identity);
+            corpse.transform.localScale = transform.localScale;
+            m_corpses.Add(corpse);
         }
-       else
+        else
         {
             IsGameOver();
         }
 
         FeedBackTrace();
 
+        float newScaleX = transform.localScale.x * 0.8f;
+        float newScaleY = transform.localScale.y * 0.8f;
+        transform.localScale = new Vector3(newScaleX, newScaleY, 1);
         transform.position = GameManager.m_RespawnPoint;
+    }
+
+    private void TurnIntoStone()
+    {
+        GameManager.E_Death.Invoke();
         m_TimeSpentObserved = 0;
     }
 
