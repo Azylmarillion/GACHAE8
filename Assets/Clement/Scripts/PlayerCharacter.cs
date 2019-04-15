@@ -17,7 +17,7 @@ public class PlayerCharacter : MonoBehaviour
     private float m_TimeSpentObserved;
     public List<GameObject> m_corpses;
     GameObject m_MeshInstance = null;
-    [SerializeField] private float m_DeathStaggerTime = 2;
+    [SerializeField] private float m_DeathStaggerTime = 1.5f;
 
 
     void Start()
@@ -68,25 +68,26 @@ public class PlayerCharacter : MonoBehaviour
             GameObject corpse = Instantiate(m_DeadBodyPrefab, transform.position, Quaternion.identity);
             corpse.transform.localScale = transform.localScale;
             m_corpses.Add(corpse);
+
+            FeedBackTrace();
+
+            float newScaleX = transform.localScale.x * 0.8f;
+            float newScaleY = transform.localScale.y * 0.8f;
+            transform.localScale = new Vector3(newScaleX, newScaleY, 1);
+            m_CanDie = false;
+
+            if (m_SpriteBernadette)
+            {
+                GameManager.m_AreInputsEnabled = false;
+                m_SpriteBernadette.enabled = false;
+                StartCoroutine(DeathStagger(m_DeathStaggerTime));
+            }
         }
         else
         {
             IsGameOver();
         }
 
-        FeedBackTrace();
-
-        float newScaleX = transform.localScale.x * 0.8f;
-        float newScaleY = transform.localScale.y * 0.8f;
-        transform.localScale = new Vector3(newScaleX, newScaleY, 1);
-        m_CanDie = false;
-
-        if (m_SpriteBernadette)
-        {
-            GameManager.m_AreInputsEnabled = false;
-            m_SpriteBernadette.enabled = false;
-            StartCoroutine(DeathStagger(m_DeathStaggerTime));
-        }
 
     }
 
