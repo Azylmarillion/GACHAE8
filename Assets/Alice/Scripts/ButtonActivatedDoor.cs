@@ -36,5 +36,6 @@ public class ButtonActivatedDoor : MonoBehaviour
         }
         m_Mesh.enabled = false;
         m_Collider.isTrigger = true;
+        GameManager.m_RespawnPoint = transform.position;
     }
 }

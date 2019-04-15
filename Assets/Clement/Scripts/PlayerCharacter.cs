@@ -7,7 +7,7 @@ public class PlayerCharacter : MonoBehaviour
 {
     public bool m_CanDie = true;
     [SerializeField] private float m_TimeObservedBeforeDying = 2;
-    [SerializeField] private GameObject m_DeadBodyPrefab = null;
+    public GameObject m_DeadBodyPrefab = null;
     [SerializeField] private Image m_LittleDoll;
     [SerializeField] private Image m_MediumDoll;
     [SerializeField] private Image m_BigDoll;
@@ -65,9 +65,9 @@ public class PlayerCharacter : MonoBehaviour
 
         if (m_DeadBodyPrefab != null && GameManager.m_nbrCadavre >= 0)
         {
-            GameObject corpse = Instantiate(m_DeadBodyPrefab, transform.position, Quaternion.identity);
+           /* GameObject corpse = Instantiate(m_DeadBodyPrefab, transform.position, Quaternion.identity);
             corpse.transform.localScale = transform.localScale;
-            m_corpses.Add(corpse);
+            m_corpses.Add(corpse);*/
 
             FeedBackTrace();
 

@@ -32,7 +32,7 @@ public class Button : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Box") || collision.CompareTag("Player") || collision.CompareTag("Corpse"))
+        if (collision.CompareTag("Box") || collision.CompareTag("Corpse"))
         {
             m_objectsOnButton--;
 
