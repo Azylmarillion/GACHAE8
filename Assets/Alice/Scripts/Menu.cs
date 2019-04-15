@@ -15,10 +15,7 @@ public class Menu : MonoBehaviour
 
     private void Update()
     {
-        //if (SceneManager.GetActiveScene().name != "SceneAlice")
-        //{
-        //    ManagePauseMenu();
-        //}
+
     }
 
     private void Awake()
@@ -34,11 +31,21 @@ public class Menu : MonoBehaviour
     public void ManagePauseMenu(bool _doIt)
     {
         if (!_doIt) return;
+
         if (SceneManager.GetActiveScene().name != "SceneAlice")
         {
             if (!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
             {
-                m_PauseMenu.SetActive(!m_PauseMenu.activeInHierarchy);
+                if(m_PauseMenu.activeInHierarchy)
+                {
+                    Time.timeScale = 1;
+                    m_PauseMenu.SetActive(false);
+                }
+                else
+                {
+                    Time.timeScale = 0;
+                    m_PauseMenu.SetActive(true);
+                }
             }
         }        
     }
@@ -50,7 +57,9 @@ public class Menu : MonoBehaviour
 
     public void Restart()
     {
-        //A L'AIDE A VOIR
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
 
     public void ReturnToMenu()
@@ -62,6 +71,7 @@ public class Menu : MonoBehaviour
     public void OpenOptions()
     {
         m_OptionMenu.SetActive(true);
+       //FindObjectOfType<>
     }
 
     public void SetVolume(float _volume)

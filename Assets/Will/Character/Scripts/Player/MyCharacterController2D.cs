@@ -36,6 +36,7 @@ public class MyCharacterController2D : MonoBehaviour
     [System.Serializable]
     public class BoolEvent : UnityEvent<bool> { }
 
+
     #endregion
 
     #region Meths
