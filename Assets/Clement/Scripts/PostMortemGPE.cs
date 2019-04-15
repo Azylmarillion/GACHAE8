@@ -35,8 +35,9 @@ public class PostMortemGPE : MonoBehaviour
         if (player && m_CorpseToReveal)
         {
             GameManager.m_nbrCadavre--;
-            GameManager.m_SaturationValue -= 33.33f;
-
+            GameManager.m_SaturationValue -= 25f;
+            GameManager.m_VignetteMaxSize += 0.2f;
+            GameManager.m_VignetteMinSize += 0.1f;
             GameManager.E_Death.Invoke();
             collision.transform.position = GameManager.m_RespawnPoint;
 

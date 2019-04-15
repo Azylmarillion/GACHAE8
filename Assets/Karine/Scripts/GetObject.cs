@@ -10,6 +10,9 @@ public class GetObject : MonoBehaviour
 
     protected bool pickedUp = false;
 
+    [SerializeField]
+    private ParticleSystem particles;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -26,9 +29,9 @@ public class GetObject : MonoBehaviour
                     case 0:
                         GameManager.m_JumpSpeedPower = true;
                         GameManager.m_PickUpsGot += 1;
-                        GameManager.m_SaturationValue = -75;
                         Debug.Log("Jump & Speed Got");
                         pickedUp = true;
+
                         break;
                     case 1:
                         GameManager.m_PushPower = true;
@@ -55,6 +58,7 @@ public class GetObject : MonoBehaviour
                         pickedUp = true;
                         break;
                 }
+                
             }
         }
     }

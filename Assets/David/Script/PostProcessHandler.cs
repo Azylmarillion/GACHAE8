@@ -79,9 +79,14 @@ public class PostProcessHandler : MonoBehaviour
 
         vignettePulseSpeed = Random.Range(randMin, randMax);
 
-        if (GameManager.m_JumpSpeedPower && colorGrading.saturation.value < GameManager.m_SaturationValue)
+        if (colorGrading.saturation.value > GameManager.m_SaturationValue)
         {
-            colorGrading.saturation.value += 1;
+            colorGrading.saturation.value -= 1;
+        }
+
+        if(GameManager.m_nbrCadavre > 0)
+        {
+            vignetteOn = true;
         }
 
         if (vignetteOn)
