@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Will/Construct.unity
+    guid: a7f61e320ab126643ab76ad0bc314807
   m_configObjects: {}
