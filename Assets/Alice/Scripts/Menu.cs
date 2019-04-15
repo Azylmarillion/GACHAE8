@@ -15,10 +15,15 @@ public class Menu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && SceneManager.GetActiveScene().name != "SceneAlice")
-        {
-            ManagePauseMenu();
-        }
+        //if (SceneManager.GetActiveScene().name != "SceneAlice")
+        //{
+        //    ManagePauseMenu();
+        //}
+    }
+
+    private void Awake()
+    {
+        XboxControllerInputManagerWindows.OnStartDownInputPress += ManagePauseMenu;
     }
 
     public void Play()
@@ -26,13 +31,16 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("Test");
     }
 
-    public void ManagePauseMenu()
+    public void ManagePauseMenu(bool _doIt)
     {
-        if (!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
+        if (!_doIt) return;
+        if (SceneManager.GetActiveScene().name != "SceneAlice")
         {
-            m_PauseMenu.SetActive(!m_PauseMenu.activeInHierarchy);
-        }
-
+            if (!m_OptionMenu.activeInHierarchy && !m_ControlsMenu.activeInHierarchy)
+            {
+                m_PauseMenu.SetActive(!m_PauseMenu.activeInHierarchy);
+            }
+        }        
     }
 
     public void Resume()
