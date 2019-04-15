@@ -5,7 +5,7 @@ public class CameraBehaviour : MonoBehaviour
 {
     #region F/P
     public static CameraBehaviour Instance = null;
-    [Header("Camera settings :")]   
+    [Header("Camera settings :")]
     [SerializeField]
     new Camera camera = null;
     [SerializeField]
@@ -18,6 +18,17 @@ public class CameraBehaviour : MonoBehaviour
     float screenShakeLength = .5f;
     [SerializeField]
     float speed = 5;
+    [SerializeField]
+    private Vector3 cameraGeneralViewPoint;
+    [SerializeField]
+    private float cameraGeneralViewSize;
+    private float cameraOriginalSize;
+    private Vector3 cameraOriginalPosition;
+    [SerializeField]
+    private float cameraViewshiftSpeed;
+    private float cameraViewshiftChrono = 0;
+    private bool isCameraToggled;
+
     #endregion
 
     #region Meths
@@ -34,6 +45,17 @@ public class CameraBehaviour : MonoBehaviour
     public void ScreenShake()
     {
         StartCoroutine(ScreenShakeCoroutine());
+    }
+    public void ToggleGeneralView()
+    {
+        isCameraToggled = true;
+        cameraViewshiftChrono = 0;
+        cameraOriginalPosition = transform.position;
+    }
+    public void UntoggleGeneralView()
+    {
+        isCameraToggled = false;
+        camera.orthographicSize = cameraOriginalSize;
     }
     private IEnumerator ScreenShakeCoroutine()
     {
@@ -67,7 +89,23 @@ public class CameraBehaviour : MonoBehaviour
     }
     void Update()
     {
-        FollowPlayer();
+        if (isCameraToggled)
+        {
+            if (cameraViewshiftChrono <= cameraViewshiftSpeed)
+            {
+
+                transform.position = Vector3.Lerp(cameraOriginalPosition, cameraGeneralViewPoint, cameraViewshiftChrono);
+                camera.orthographicSize = Mathf.Lerp(cameraOriginalSize, cameraGeneralViewSize, cameraViewshiftChrono);
+
+                cameraViewshiftChrono += Time.fixedDeltaTime;
+            }
+        }
+
+        else
+        {
+            FollowPlayer();
+        }
     }
+
     #endregion
 }
