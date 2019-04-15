@@ -7,9 +7,10 @@ public class MyCharacterController2D : MonoBehaviour
     #region F/P    
     const float CEILINGRADIUS = .2f;
     const float GROUNDEDRADIUS = .02f;
-    [SerializeField,Range(0, 1000)]
+    [SerializeField, Range(0, 1000)]
     public float jumpForce = 100f;
-    [Range(0, .3f)] [SerializeField]
+    [Range(0, .3f)]
+    [SerializeField]
     float movementSmoothing = .05f;
     [SerializeField, Range(.1f, 50)]
     public float moveSpeed = 7;
@@ -25,9 +26,9 @@ public class MyCharacterController2D : MonoBehaviour
     [SerializeField]
     Rigidbody2D playerRigidbody2D;
     [SerializeField]
-    Transform groundCheck;                           
+    Transform groundCheck;
     [SerializeField]
-    Transform ceilingCheck; 
+    Transform ceilingCheck;
     Vector3 velocity = Vector3.zero;
     [Header("Events")]
     [Space]
@@ -45,24 +46,27 @@ public class MyCharacterController2D : MonoBehaviour
     }
 
     public void Move(float _move, bool _isJump)
-    {       
-        if (isGrounded || canAirControl)
+    {
+        if (GameManager.m_AreInputsEnabled)
         {
-            if (_move > 0 && !isFacingRight)
+            if (isGrounded || canAirControl)
             {
-                FlipCharactere();
-            }
-            else if (_move < 0 && isFacingRight)
-            {
-                FlipCharactere();
-            }
+                if (_move > 0 && !isFacingRight)
+                {
+                    FlipCharactere();
+                }
+                else if (_move < 0 && isFacingRight)
+                {
+                    FlipCharactere();
+                }
                 Vector3 targetVelocity = new Vector2(_move * 10f * moveSpeed * Time.fixedDeltaTime, playerRigidbody2D.velocity.y);
                 playerRigidbody2D.velocity = Vector3.SmoothDamp(playerRigidbody2D.velocity, targetVelocity, ref velocity, movementSmoothing);
-        }
-        if (isGrounded && _isJump)
-        {
-            isGrounded = false;            
-            playerRigidbody2D.AddForce(new Vector2(0f, jumpForce));            
+            }
+            if (isGrounded && _isJump)
+            {
+                isGrounded = false;
+                playerRigidbody2D.AddForce(new Vector2(0f, jumpForce));
+            }
         }
     }
     #endregion
@@ -80,7 +84,7 @@ public class MyCharacterController2D : MonoBehaviour
     {
         bool _wasGrounded = isGrounded;
         isGrounded = false;
-       
+
         Collider2D[] _colliders = Physics2D.OverlapCircleAll(groundCheck.position, GROUNDEDRADIUS, whatIsGround);
         for (int i = 0; i < _colliders.Length; i++)
         {

@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class PostMortemGPE : MonoBehaviour
 {
-    float m_KillBufferTime = 1;
-    bool m_CanKill = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,20 +24,12 @@ public class PostMortemGPE : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && m_CanKill)
+        PlayerCharacter player = collision.GetComponent<PlayerCharacter>();
+
+        if (collision.CompareTag("Player") && player.m_CanDie)
         {
             GameManager.E_Death.Invoke();
-            m_CanKill = false;
-            StartCoroutine(KillBuffer(m_KillBufferTime));
         }
-
-
     }
-
-    // This was set up because it was detecting both triggers of the player, and it was killing twice
-    private IEnumerator KillBuffer(float _Wait)
-    {
-        yield return new WaitForSeconds(_Wait);
-        m_CanKill = true;
-    }
+    
 }
