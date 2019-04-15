@@ -55,13 +55,12 @@ public class PlayerController : MonoBehaviour
     {        
         XboxControllerInputManagerWindows.OnADownInputPress += MakeMeJump;
         XboxControllerInputManagerWindows.OnHorizontalAxisInput += MakeMeMove;
-        //KeyboardInputsManager.OnSpaceClickDownInputPress += MakeMeJump;
+        KeyboardInputsManager.OnSpaceClickDownInputPress += MakeMeJump;
         
     }
 
     void FixedUpdate()
-    {
-       // MakeMeMove(Input.GetAxis("Horizontal"));
+    {        
         playerToControl.Move(horizontalMove, canJump);
         canJump = false;
         if (GameManager.m_JumpSpeedPower)
@@ -81,6 +80,14 @@ public class PlayerController : MonoBehaviour
         }
         GameManager.E_Death.AddListener(OnDeath);
         GameManager.m_RespawnPoint = transform.position;
-    }     
+    }
+    private void Update()
+    {
+        horizontalMove = Input.GetAxis("Horizontal");
+        if (Mathf.Abs(horizontalMove) > .01f)
+        {
+            MakeMeMove(horizontalMove);
+        }
+    }
     #endregion
 }
