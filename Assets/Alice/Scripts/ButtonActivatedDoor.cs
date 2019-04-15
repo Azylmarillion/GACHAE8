@@ -5,6 +5,7 @@ using UnityEngine;
 public class ButtonActivatedDoor : MonoBehaviour
 {
     [SerializeField] private List<Button> m_Buttons;
+    [SerializeField] private GameObject m_Fog = null;
     private SpriteRenderer m_Mesh;
     private BoxCollider2D m_Collider;
     private bool m_haveVerfiOnce = false;
@@ -37,6 +38,10 @@ public class ButtonActivatedDoor : MonoBehaviour
 
                 return;
             }
+        }
+        if(m_Fog)
+        {
+            Destroy(m_Fog);
         }
 
         m_Mesh.enabled = false;

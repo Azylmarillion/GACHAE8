@@ -2896,6 +2896,7 @@ MonoBehaviour:
   m_Buttons:
   - {fileID: 1629635308}
   - {fileID: 1830177809}
+  m_Fog: {fileID: 0}
 --- !u!61 &286253793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4428,6 +4429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Buttons:
   - {fileID: 87199687}
+  m_Fog: {fileID: 293866078}
 --- !u!61 &372604357
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8732,6 +8734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Buttons:
   - {fileID: 645028994}
+  m_Fog: {fileID: 0}
 --- !u!1 &978849989
 GameObject:
   m_ObjectHideFlags: 0
