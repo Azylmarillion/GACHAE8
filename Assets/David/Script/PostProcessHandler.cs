@@ -62,6 +62,12 @@ public class PostProcessHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_EDITOR
+        profile.TryGetSettings<ColorGrading>(out colorGrading);
+        profile.TryGetSettings<Vignette>(out vignette);
+        vignette.intensity.value = 0;
+        colorGrading.saturation.value = 0;
+#endif
         profile.TryGetSettings<ColorGrading>(out colorGrading);
         profile.TryGetSettings<Vignette>(out vignette);
         if (profile == null)
@@ -79,9 +85,14 @@ public class PostProcessHandler : MonoBehaviour
 
         vignettePulseSpeed = Random.Range(randMin, randMax);
 
-        if (GameManager.m_JumpSpeedPower && colorGrading.saturation.value < GameManager.m_SaturationValue)
+        if (colorGrading.saturation.value > GameManager.m_SaturationValue)
         {
-            colorGrading.saturation.value += 1;
+            colorGrading.saturation.value -= 1;
+        }
+
+        if(GameManager.m_nbrCadavre > 0)
+        {
+            vignetteOn = true;
         }
 
         if (vignetteOn)

@@ -66,7 +66,6 @@ public class PlayerController : MonoBehaviour
         canJump = false;
         if (GameManager.m_JumpSpeedPower)
         {
-            playerToControl.moveSpeed = 12f;
             playerToControl.jumpForce = 300f;
         }
     }
