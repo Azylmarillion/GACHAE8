@@ -10,6 +10,7 @@ static public class GameManager
     // But it's okay, it's a GameJam :)
 
     public static UnityEvent E_Death = new UnityEvent();
+    public static UnityEvent E_LevelUp = new UnityEvent();
 
     public static bool m_JumpSpeedPower = false;
     public static bool m_PushPower = false;

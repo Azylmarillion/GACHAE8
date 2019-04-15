@@ -36,6 +36,7 @@ public class PlayerCharacter : MonoBehaviour
 
         m_TimeSpentObserved = 0;
         GameManager.E_Death.AddListener(OnPlayerDeath);
+        GameManager.E_LevelUp.AddListener(LevelUp);
         m_OriginalScale = transform.localScale;
     }
 
@@ -54,6 +55,21 @@ public class PlayerCharacter : MonoBehaviour
         {
             m_TimeSpentObserved = 0;
         }
+
+        FeedBackTrace();
+    }
+
+    void LevelUp()
+    {
+        if(GameManager.m_nbrCadavre < 3)
+        {
+
+        }
+        GameManager.m_nbrCadavre++;
+        float newScaleX = transform.localScale.x *1.2f;
+        float newScaleY = transform.localScale.y * 1.2f;
+        transform.localScale = new Vector3(newScaleX, newScaleY, 1);
+        FeedBackTrace();
     }
 
     private void OnPlayerDeath()
@@ -68,8 +84,6 @@ public class PlayerCharacter : MonoBehaviour
            /* GameObject corpse = Instantiate(m_DeadBodyPrefab, transform.position, Quaternion.identity);
             corpse.transform.localScale = transform.localScale;
             m_corpses.Add(corpse);*/
-
-            FeedBackTrace();
 
             float newScaleX = transform.localScale.x * 0.8f;
             float newScaleY = transform.localScale.y * 0.8f;
@@ -122,22 +136,33 @@ public class PlayerCharacter : MonoBehaviour
             m_corpses.Clear();
             GameManager.m_nbrCadavre = GameManager.m_nbrCadavreMax;
             transform.localScale = m_OriginalScale;
-
         }
     }
 
     public void FeedBackTrace()
     {
+        if (GameManager.m_nbrCadavre == 3)
+        {
+            m_BigDoll.enabled = true;
+            m_MediumDoll.enabled = true;
+            m_LittleDoll.enabled = true;
+        }
         if (GameManager.m_nbrCadavre == 2)
         {
             m_BigDoll.enabled = false;
+            m_MediumDoll.enabled = true;
+            m_LittleDoll.enabled = true;
         }
         else if (GameManager.m_nbrCadavre == 1)
         {
+            m_BigDoll.enabled = false;
             m_MediumDoll.enabled = false;
+            m_LittleDoll.enabled = true;
         }
         else if (GameManager.m_nbrCadavre < 1)
         {
+            m_BigDoll.enabled = false;
+            m_MediumDoll.enabled = false;
             m_LittleDoll.enabled = false;
         }
 
