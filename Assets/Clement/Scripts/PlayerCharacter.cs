@@ -63,13 +63,16 @@ public class PlayerCharacter : MonoBehaviour
     {
         if(GameManager.m_nbrCadavre < 3)
         {
-
+            GameManager.m_VignetteMaxSize -= 0.2f;
+            GameManager.m_VignetteMinSize -= 0.1f;
+            GameManager.m_SaturationValue += 25f;
+            GameManager.m_nbrCadavre++;
+            float newScaleX = transform.localScale.x * 1.2f;
+            float newScaleY = transform.localScale.y * 1.2f;
+            transform.localScale = new Vector3(newScaleX, newScaleY, 1);
+            FeedBackTrace();
         }
-        GameManager.m_nbrCadavre++;
-        float newScaleX = transform.localScale.x *1.2f;
-        float newScaleY = transform.localScale.y * 1.2f;
-        transform.localScale = new Vector3(newScaleX, newScaleY, 1);
-        FeedBackTrace();
+    
     }
 
     private void OnPlayerDeath()

@@ -71,6 +71,7 @@ public class Menu : MonoBehaviour
     public void OpenOptions()
     {
         m_OptionMenu.SetActive(true);
+       //FindObjectOfType<>
     }
 
     public void SetVolume(float _volume)
